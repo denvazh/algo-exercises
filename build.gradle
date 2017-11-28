@@ -1,0 +1,55 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.1.61'
+}
+
+apply plugin: 'java'
+apply plugin: 'kotlin'
+apply plugin: 'idea'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile(
+            'org.jetbrains.kotlin:kotlin-stdlib-jre8:1.1.61',
+            'log4j:log4j:1.2.17',
+            'com.google.inject:guice:4.1.0',
+            'commons-io:commons-io:2.5'
+    )
+
+    testCompile(
+            'junit:junit:4.12',
+            'org.jetbrains.kotlin:kotlin-test-junit:1.1.61',
+            'io.kotlintest:kotlintest:2.0.7',
+            'org.hamcrest:hamcrest-library:1.3',
+            'org.mockito:mockito-core:2.7.5'
+    )
+}
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+test {
+    testLogging {
+        events 'started', 'passed' // show the tests run in the command-line output
+        showStandardStreams = true
+    }
+}
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
