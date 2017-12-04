@@ -3,7 +3,7 @@ package heaps
 import io.kotlintest.specs.BehaviorSpec
 import io.kotlintest.matchers.shouldBe
 
-class HeapElementTest: BehaviorSpec() {
+class HeapElementTest : BehaviorSpec() {
     init {
         given("binary heap elements") {
             When("a pair with different keys") {
